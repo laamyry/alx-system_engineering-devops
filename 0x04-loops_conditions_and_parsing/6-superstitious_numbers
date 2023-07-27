@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# script that displays numbers from 1 to 20
+m=1
+
+while [ "$m" -lt 21 ]; do
+  
+  case "$m" in
+    4)
+      echo "$m"
+      echo "bad luck from China"
+      ;;
+    9)
+      echo "$m"
+      echo "bad luck from Japan"
+      ;;
+    17)
+      echo "$m"
+      echo "bad luck from Italy"
+      ;;
+    *)
+      echo "$m"
+      ;;
+  esac
+
+  ((m++))
+done
