@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# print a string 10 times using until loop
+# This script is displaying "Best School" 10 times
 m=0
 
 until false; do

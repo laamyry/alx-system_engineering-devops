@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# prints a string 10 times using while loop 
+# This script is displaying "Best School" 10 times
 m=0
 
 while [ "$m" -lt 10 ]; do
