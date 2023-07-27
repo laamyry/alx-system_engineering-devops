@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Bash script that displays numbers from 1 to 100.
+m=1
+
+while [ "$m" -le 100 ]; do
+
+
+  if ! (( m % 3 )) && ! (( m % 5 )); then
+    echo "FizzBuzz"
+  elif ! (( m % 3 )); then
+    echo "Fizz"
+  elif ! (( m % 5 )); then
+    echo "Buzz"
+  else
+    echo "$m"
+  fi
+  
+  ((m++))
+done
