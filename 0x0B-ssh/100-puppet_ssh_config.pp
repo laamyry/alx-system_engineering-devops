@@ -5,7 +5,7 @@ file { 'ect/ssh/ssh_config':
   path    => 'ect/ssh/ssh_config',
   centent => "
     host *
-    IdentityFile ~/.ssh/school,
-    PasswordAuthentication no,
+       IdentityFile ~/.ssh/school,
+       PasswordAuthentication no,
 ",
 }
