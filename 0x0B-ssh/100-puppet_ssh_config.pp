@@ -3,7 +3,7 @@
 file { 'ect/ssh/ssh_config':
   ensure  => present,
   centent => "
-    host
+    host *
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
 ",
