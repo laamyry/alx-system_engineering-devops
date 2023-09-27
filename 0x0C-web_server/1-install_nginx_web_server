@@ -5,11 +5,11 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 
-# define folder
-/etc/init.d/nginx start
+# Ensure Nginx is listening on port 80
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
 
 # Create HTML.
-echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# reload nginx service
-nginx -s reload
+# run nginx service
+sudo service nginx restart
