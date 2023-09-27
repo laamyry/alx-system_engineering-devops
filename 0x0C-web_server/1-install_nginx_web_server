@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Install nginx web server
 
-# update sys and install nginx
-sudo apt-get -y update
+# Install nginx web server
+sudo apt-get update
 sudo apt-get install -y nginx
 
-# create html file
+# Create HTML.
 echo "Hello World!" > /var/www/html/index.html
 
 # run nginx service
-sudo service nginx start
+service nginx start
