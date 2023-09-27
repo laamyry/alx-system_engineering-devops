@@ -2,8 +2,8 @@
 # Install nginx web server
 
 # update sys and install nginx web server
-sudo apt-get update
-sudo apt-get install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
 # lestening on port 80
 sudo ufw 'Nginx HTTP'
