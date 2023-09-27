@@ -5,8 +5,11 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 
+# define folder
+/etc/init.d/nginx start
+
 # Create HTML.
 echo "Hello World!" > /var/www/html/index.html
 
-# run nginx service
-service nginx start
+# reload nginx service
+nginx -s reload
