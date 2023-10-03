@@ -1,1 +1,20 @@
 #!/usr/bin/env bash
+# Configure your Nginx server so that /redirect_me is redirecting to another page.
+
+# update sys and install nginx web server
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# Create index HTML.
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# edit default file
+replace="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/laamyry permanent ; "
+sudo sed -i "s/server_name _;/$replace/g" /etc/nginx/sites-available/default
+
+
+# restart nginx service
+sudo service nginx restart
+
+# reload nginx service
+sudo service nginx reload
