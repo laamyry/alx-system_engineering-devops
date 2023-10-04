@@ -14,7 +14,7 @@ file_line { 'install':
 }
 #redirect_me
 file { '/var/www/html/index.html':
-  content => '<html><body><h1 style="text-align:center">Hello World</h1></body></html>',
+  content => 'Hello World',
 }
 
 #start nginx
