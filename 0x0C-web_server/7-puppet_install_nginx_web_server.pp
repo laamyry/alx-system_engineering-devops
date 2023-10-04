@@ -8,9 +8,9 @@ package { 'nginx':
 #check if nginx is running
 file_line { 'install nginx':
   ensure => 'present',
-  line => '/etc/nginx/sites-enabled/default',
-  after => 'listen 80 default_server;',
-  line => 'rewrite ^/redirect_me https://www.github.com/laamyry permanent;',
+  path   => '/etc/nginx/sites-enabled/default',
+  after  => 'listen 80 default_server;',
+  line   => 'rewrite ^/redirect_me https://www.github.com/laamyry permanent;',
 }
 #redirect_me
 file { '/var/www/html/index.html':
