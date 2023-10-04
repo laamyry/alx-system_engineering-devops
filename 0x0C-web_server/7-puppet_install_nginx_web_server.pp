@@ -6,7 +6,7 @@ package { 'nginx':
 }
 
 #check if nginx is running
-file_line { 'install nginx':
+file_line { 'install':
   ensure => 'present',
   path   => '/etc/nginx/sites-enabled/default',
   after  => 'listen 80 default_server;',
