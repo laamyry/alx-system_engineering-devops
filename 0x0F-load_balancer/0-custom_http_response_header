@@ -14,6 +14,3 @@ sudo nginx -t
 
 # restart nginx service
 sudo service nginx restart
-
-# restart nginx reload
-sudo service nginx reload
