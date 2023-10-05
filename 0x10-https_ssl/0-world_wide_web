@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Function to display information about a subdomain
+display_info() {
+    local subdomain="$1"
+    local domain="$2"
+    local result
+    result="$(dig +short "$subdomain.$domain")"
+
+    if [ -z "$result" ]; then
+        echo "The subdomain $subdomain does not exist for $domain."
+    else
+        local record_type
+        record_type="$(dig +short "$subdomain.$domain" | awk '{print $4}')"
+        local destination
+        destination="$(dig +short "$subdomain.$domain")"
+        echo "The subdomain $subdomain is a $record_type record and points to $destination"
+    fi
+}
+
+# Check if both domain and subdomain arguments are provided
+if [ $# -eq 2 ]; then
+    display_info "$2" "$1"
+else
+# Display information for default subdomains in the specified order
+    display_info "www" "$1"
+    display_info "lb-01" "$1"
+    display_info "web-01" "$1"
+    display_info "web-02" "$1"
+fi
