@@ -1,1 +1,28 @@
 #!/usr/bin/bash
+# Write 0-custom_http_response_header so that it configures a brand new Ubuntu machine to the requirements asked in this task.
+
+# update sys and install nginx web server
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# Create index HTML.
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# edit default file
+replace="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/laamyry permanent ; "
+sudo sed -i "s/server_name _;/$replace/g" /etc/nginx/sites-enabled/default
+
+# create 404.html
+echo "Ceci n'est pas une page." | sudo tee /var/www/html/404.html
+
+# edit default file to custom header
+sudo sed -i "server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+
+# test nginx config
+sudo nginx -t
+
+# restart nginx service
+sudo service nginx restart
+
+# restart nginx reload
+sudo service nginx reload
