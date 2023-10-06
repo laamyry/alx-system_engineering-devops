@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Using what you did for task #0, make your fix short and sweet.
-sudo sed -i 's/8080 default/80 default/' /etc/nginx/sites-enabled/default
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx restart
-sudo pkill -1 nginx
+pkill -o nginx
