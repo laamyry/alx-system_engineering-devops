@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 # the minimum number of commands to automate your fix.
-
-# replace 8080 with 80
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-
-# test nginx config
-sudo nginx -t
-
-# restart nginx
 service nginx restart
-
-# restart reload
 service nginx reload
