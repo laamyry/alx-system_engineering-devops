@@ -9,7 +9,6 @@ config=\
 "
 frontend http_front
         bind *:80
-        mode http
         default_backend my_backend
 backend my_backend
         balance roundrobin
