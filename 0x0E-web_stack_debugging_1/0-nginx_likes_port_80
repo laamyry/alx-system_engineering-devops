@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # the minimum number of commands to automate your fix.
 
 # replace 8080 with 80
