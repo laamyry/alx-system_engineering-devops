@@ -12,7 +12,7 @@ display_info() {
         echo "The subdomain $subdomain does not exist for $domain."
     else
         local record_type
-        record_type="$(dig +short "$subdomain.$domain" | awk '{print $4}')"
+        record_type=$(dig "$subdomain.$domain" | awk '/ANSWER SECTION:/{getline; print $4}')
         local destination
         destination="$(dig +short "$subdomain.$domain")"
         echo "The subdomain $subdomain is a $record_type record and points to $destination"
@@ -29,3 +29,5 @@ else
     display_info "web-01" "$1"
     display_info "web-02" "$1"
 fi
+
+record_type=$(dig "$sub.$domain" | awk '/ANSWER SECTION:/{getline; print $4}')
