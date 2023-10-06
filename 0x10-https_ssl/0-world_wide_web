@@ -31,3 +31,6 @@ else
 fi
 
 record_type=$(dig "$sub.$domain" | awk '/ANSWER SECTION:/{getline; print $4}')
+
+
+DOMAIN='www.laamyry.tech' sudo -E bash -c 'cat /etc/letsencrypt/live/$DOMAIN/fullchain.pem /etc/letsencrypt/live/$DOMAIN/privkey.pem > /etc/haproxy/certs/$DOMAIN.pem'
