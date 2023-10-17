@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+sudo apt update
+sudo apt-key add signature.key
+sudo sh -c 'echo "deb http://repo.mysql.com/apt/ubuntu bionic mysql-5.7" >> /etc/apt/sources.list.d/mysql.list'
+sudo apt-get update
+sudo apt-cache policy mysql-server
+sudo apt -y install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7*
+
+CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'holberton_user'@'localhost';
+
+
+CREATE DATABASE tyrell_corp;
+USE tyrell_corp;
+CREATE TABLE nexus6 (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+INSERT INTO nexus6 (name) VALUES ('Leon');
+
+GRANT SELECT ON tyrell_corp.nexus6 TO 'holberton_user'@'localhost';
+FLUSH PRIVILEGES;
+USE tyrell_corp;
+SELECT * FROM nexus6;
+SHOW GRANTS FOR 'holberton_user'@'localhost';
+
+
+
+CREATE USER 'replica_user'@'%' IDENTIFIED BY 'projectcorrection280hbtn';
+GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
+GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'replica_user'@'%';
+
+log_bin = /var/log/mysql/mysql-bin.log
+server-id = 1
+
+
+file = mysql-bin.000001
+position = 154
+
+
+CHANGE MASTER TO MASTER_HOST='100.26.132.85', Master_User='replica_user', Master_PASSWORD='projectcorrection280hbtn', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=154;
+
+START SLAVE;
+SHOW SLAVE STATUS\G
+
+sudo ufw allow 3306/tcp
+
+
+SHOW MASTER STATUS;
