@@ -13,6 +13,6 @@ if __name__ == "__main__":
         json.dump({m.get("id"): [{
             "task": n.get("title"),
             "completed": n.get("completed"),
-            "username": m.get("name")
+            "username": m.get("username")
         } for n in todo if m.get("id") == n.get("userid")]
             for m in users}, json_file)
