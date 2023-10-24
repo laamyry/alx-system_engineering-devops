@@ -14,5 +14,5 @@ if __name__ == "__main__":
             "task": n.get("title"),
             "completed": n.get("completed"),
             "username": m.get("username")
-        } for n in todo if m.get("id") == n.get("userid")]
+        } for n in todo if m.get("id") == n.get("userId")]
             for m in users}, json_file)
