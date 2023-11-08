@@ -5,7 +5,7 @@ import requests
 
 def top_ten(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    response = requests.get(url, headers={"User-Agent": "MyRedditApp/1.0"})
+    response = requests.get(url, headers={"User-Agent": "med_laamyry"})
     if response.status_code != 200:
         print(None)
         return
