@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # No service interruption
 # pgrep gunicorn | xargs kill -HUP
-ps aux | pkill -HUP gunicorn
+kill -HUP $(pgrep -o gunicorn)
